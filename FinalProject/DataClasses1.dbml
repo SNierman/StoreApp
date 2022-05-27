@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="StoreDB" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LAPTOP-O6LEF7T1\SQLEXPRESS;Initial Catalog=StoreDB;Integrated Security=True" SettingsObjectName="FinalProject.Properties.Settings" SettingsPropertyName="StoreDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.CUSTOMER" Member="CUSTOMERs">
+    <Type Name="CUSTOMER">
+      <Column Name="CustID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CustUsername" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="CustPassword" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="CustCreditLimit" Type="System.Decimal" DbType="Decimal(8,2) NOT NULL" CanBeNull="false" />
+      <Column Name="CustCurrBalance" Type="System.Decimal" DbType="Decimal(8,2) NOT NULL" CanBeNull="false" />
+      <Association Name="CUSTOMER_PURCHASE_ITEM" Member="PURCHASE_ITEMs" ThisKey="CustID" OtherKey="CustID" Type="PURCHASE_ITEM" />
+      <Association Name="CUSTOMER_PURCHASE" Member="PURCHASEs" ThisKey="CustID" OtherKey="CustID" Type="PURCHASE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ITEM" Member="ITEMs">
+    <Type Name="ITEM">
+      <Column Name="ItemID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemDescription" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ItemCost" Type="System.Decimal" DbType="Decimal(8,2) NOT NULL" CanBeNull="false" />
+      <Association Name="ITEM_PURCHASE_ITEM" Member="PURCHASE_ITEMs" ThisKey="ItemID" OtherKey="ItemID" Type="PURCHASE_ITEM" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PURCHASE_ITEM" Member="PURCHASE_ITEMs">
+    <Type Name="PURCHASE_ITEM">
+      <Column Name="PurchaseItemID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PurchaseID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CUSTOMER_PURCHASE_ITEM" Member="CUSTOMER" ThisKey="CustID" OtherKey="CustID" Type="CUSTOMER" IsForeignKey="true" />
+      <Association Name="ITEM_PURCHASE_ITEM" Member="ITEM" ThisKey="ItemID" OtherKey="ItemID" Type="ITEM" IsForeignKey="true" />
+      <Association Name="PURCHASE_PURCHASE_ITEM" Member="PURCHASE" ThisKey="PurchaseID" OtherKey="PurchaseID" Type="PURCHASE" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PURCHASE" Member="PURCHASEs">
+    <Type Name="PURCHASE">
+      <Column Name="PurchaseID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CustID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OrderTotal" Type="System.Decimal" DbType="Decimal(8,2) NOT NULL" CanBeNull="false" />
+      <Column Name="PurchaseDate" Type="System.DateTime" DbType="DateTime NOT NULL" IsReadOnly="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="PURCHASE_PURCHASE_ITEM" Member="PURCHASE_ITEMs" ThisKey="PurchaseID" OtherKey="PurchaseID" Type="PURCHASE_ITEM" />
+      <Association Name="CUSTOMER_PURCHASE" Member="CUSTOMER" ThisKey="CustID" OtherKey="CustID" Type="CUSTOMER" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

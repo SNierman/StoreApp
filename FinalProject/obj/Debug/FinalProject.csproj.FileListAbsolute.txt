@@ -1,0 +1,9 @@
+C:\Users\shain\source\repos\FinalProject\FinalProject\bin\Debug\FinalProject.exe.config
+C:\Users\shain\source\repos\FinalProject\FinalProject\bin\Debug\FinalProject.exe
+C:\Users\shain\source\repos\FinalProject\FinalProject\bin\Debug\FinalProject.pdb
+C:\Users\shain\source\repos\FinalProject\FinalProject\obj\Debug\FinalProject.csproj.AssemblyReference.cache
+C:\Users\shain\source\repos\FinalProject\FinalProject\obj\Debug\FinalProject.Store.resources
+C:\Users\shain\source\repos\FinalProject\FinalProject\obj\Debug\FinalProject.csproj.GenerateResource.cache
+C:\Users\shain\source\repos\FinalProject\FinalProject\obj\Debug\FinalProject.csproj.CoreCompileInputs.cache
+C:\Users\shain\source\repos\FinalProject\FinalProject\obj\Debug\FinalProject.exe
+C:\Users\shain\source\repos\FinalProject\FinalProject\obj\Debug\FinalProject.pdb
